@@ -4,17 +4,25 @@ const uuidv1 = require('uuid/v1');
 const { execute } = require('apollo-link');
 const { WebSocketLink } = require('apollo-link-ws');
 const { parse } = require('graphql');
+const { SubscriptionClient } = require('subscriptions-transport-ws');
+const ws = require('ws');
+
+const getWsClient = function(wsurl) {
+  const client = new SubscriptionClient(
+    wsurl, {reconnect: true}, ws
+  );
+  return client;
+}
 
 module.exports = {
-	subscribe: function(client, query, variables, dataKey) {
-		var document = parse(query);
-		var operationName = document.definitions[0].name.value;
+	subscribe: function(wsurl, query, variables) {
+		var graphQuery = parse(query);
+		var operationName = graphQuery.definitions[0].name.value;
 		var subscriber = {
-			client: client,
+			client: getWsClient(wsurl),
 			query: query,
 			variables: variables,
 			operationName: operationName,
-			dataKey: dataKey,
 			executable: null,
 			observable: null,
 			cache: {},
@@ -30,5 +38,7 @@ module.exports = {
 			}
 		};
 		return subscriber;
-	}
+	},
+  initClient: function(wsurl) {
+  },
 }
