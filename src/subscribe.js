@@ -23,15 +23,14 @@ module.exports = {
 			query: query,
 			variables: variables,
 			operationName: operationName,
-			executable: null,
 			observable: null,
 			cache: {},
 			setObservable: function(observable){
 				this.observable = observable;
 			},
-			start: function () {
+			getSubscriptionObservable: function () {
 				const link = new WebSocketLink(this.client);
-				this.executable = execute(link, {query: this.query, operationName: this.operationName, variables: this.variables});
+				return execute(link, {query: this.query, operationName: this.operationName, variables: this.variables});
 			},
 			end: function () {
 				this.observable.unsubscribe();
