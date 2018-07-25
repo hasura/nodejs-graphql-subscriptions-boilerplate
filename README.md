@@ -1,5 +1,5 @@
 # Boilerplate to test GraphQL subscriptions using nodejs
-Although it takes just a [few lines of code](https://github.com/apollographql/subscriptions-transport-ws) to set up your NodeJS code to use GraphQL subscriptions, it does involve going through a few pages of docs. We've put together a few lines of boilerplate code to make it easy to get started.
+Although it takes just a [few lines of code](./index.js#L1-L21) to set up your NodeJS code to use GraphQL subscriptions, it does involve going through a few pages of docs. We've put together a few lines of boilerplate code to make it easy to get started.
 
 ## Usage:
 
