@@ -19,6 +19,7 @@ const createSubscriptionObservable = (wsurl, query, variables) => {
 };
 
 // Usage
+
 const gql = require('graphql-tag');
 
 function main() {
@@ -26,10 +27,11 @@ function main() {
 subscription liveAuthor {
   author {
     id
-    name	
+    name
   }
 }
 `;
+  
   const subscriptionClient = createSubscriptionObservable(
     'https://gatsby-ser.herokuapp.com/v1alpha1/graphql', // GraphQL URL
     subscribeQuery, // Subscription query 
