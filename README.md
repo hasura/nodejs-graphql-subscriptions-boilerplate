@@ -1,13 +1,13 @@
 # Boilerplate to test GraphQL subscriptions using nodejs
-Setting up your NodeJS code to use GraphQL subscriptions involves going through a few hoops.
-Using GraphQL subscriptions from your NodeJS code is especially useful if you want to react to events or changes on a GraphQL backend.
+Although it takes just a [few lines of code](https://github.com/apollographql/subscriptions-transport-ws) to set up your NodeJS code to use GraphQL subscriptions, it does involve going through a few pages of docs. We've put together a few lines of boilerplate code to make it easy to get started.
 
 ## Usage:
 
 - Reference code:
-  Refer to [index.js](./index.js) for the boilerplate code that sets up a GraphQL subscription observable.
+  Refer to [index.js](./index.js#L1-L21) for the boilerplate code that sets up a GraphQL subscription observable.
 
 - Dependencies:
+  This uses the [apollo link](https://github.com/apollographql/apollo-link), [subscription-transport-ws](https://github.com/apollographql/subscriptions-transport-ws) libraries.
   `npm install --save graphql graphql-tag apollo-link apollo-link-ws subscriptions-transport-ws ws`
 
 ## Try it out:
