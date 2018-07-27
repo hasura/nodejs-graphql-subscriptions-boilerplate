@@ -1,4 +1,4 @@
-/*****  Setup a GraphQL subscription observable  ******************************/
+/*****  Setup a GraphQL subscription executable  ******************************/
 
 const { execute } = require('apollo-link');
 const { WebSocketLink } = require('apollo-link-ws');
@@ -15,7 +15,7 @@ const getWsClient = function(wsurl) {
 // wsurl: GraphQL endpoint
 // query: GraphQL query (use gql`` from the 'graphql-tag' library)
 // variables: Query variables object
-const createSubscriptionObservable = (wsurl, query, variables) => {
+const createSubscriptionExecutable = (wsurl, query, variables) => {
   const link = new WebSocketLink(getWsClient(wsurl));
   return execute(link, {query: query, variables: variables});
 };
@@ -40,7 +40,7 @@ subscription liveAuthor($id: Int!) {
 `;
 
 function main() {
-  const subscriptionClient = createSubscriptionObservable(
+  const subscriptionClient = createSubscriptionExecutable(
     'https://test-gql-sub.herokuapp.com/v1alpha1/graphql', // GraphQL endpoint
     SUBSCRIBE_QUERY,                                       // Subscription query
     {id: 1}                                                // Query variables
