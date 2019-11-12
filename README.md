@@ -21,6 +21,19 @@ const getWsClient = function(wsurl) {
   const client = new SubscriptionClient(
     wsurl, {reconnect: true}, ws
   );
+  
+  // Or with X-Hasura-Access-Key...
+  // const client = new SubscriptionClient(
+  //  wsurl,
+  //   {
+  //     connectionParams: () => ({
+  //       headers: { "X-Hasura-Access-Key": HASURA_ACCESS_KEY },
+  //     }),
+  //     reconnect: true,
+  //   },
+  //   ws,
+  // );
+  
   return client;
 };
 
